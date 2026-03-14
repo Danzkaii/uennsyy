@@ -18,7 +18,6 @@
       --bg3: #24243e;
       --text: #ffffff;
       --muted: rgba(255,255,255,0.74);
-      --soft: rgba(255,255,255,0.08);
       --soft-border: rgba(255,255,255,0.12);
       --pink1: #ff4f9a;
       --pink2: #ff85c2;
@@ -232,13 +231,6 @@
       margin-bottom: 8px;
     }
 
-    .section-sub {
-      font-size: 0.94rem;
-      color: var(--muted);
-      margin-bottom: 14px;
-      line-height: 1.6;
-    }
-
     .grid-two {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -254,7 +246,6 @@
     }
 
     .secret,
-    .interactive-result,
     .result,
     .music-status,
     .note-output {
@@ -589,9 +580,7 @@
 
       .typing-line,
       .hero-desc,
-      .section-sub,
       .music-status,
-      .interactive-result,
       .secret,
       .result,
       .note-output {
@@ -661,7 +650,7 @@
   <div class="overlay-start" id="startOverlay">
     <div class="start-card">
       <div class="badge">special page</div>
-      <div class="start-title">Hai, ucink</div>
+      <div class="start-title">Hai, cantikkuu</div>
       <div class="start-sub">
         Aku bikin sesuatu yang simpel tapi niat, khusus buat kamu.
         Buka pelan-pelan ya.
@@ -676,7 +665,7 @@
 
       <div class="hero">
         <div>
-          <h1 class="hero-title" id="mainTitle">Hai, ucink</h1>
+          <h1 class="hero-title" id="mainTitle">Hai, cantikkuu</h1>
           <div class="typing-line" id="typingText"></div>
           <div class="couple-name" id="coupleName">KAI ❤ UENN</div>
 
@@ -688,9 +677,7 @@
           </div>
 
           <div class="hero-actions">
-            <button class="btn-main" onclick="showSecret()">Pencet kalau kamu kangen aku</button>
-            <button class="btn-second" onclick="changeCallName()">Ganti panggilan</button>
-            <button class="btn-soft" onclick="randomMessage()">Pesan random</button>
+            <button class="btn-main" onclick="goToWhatsApp()">Pencet kalau kamu kangen aku</button>
           </div>
 
           <div class="secret" id="secretMessage">
@@ -713,7 +700,6 @@
     <div class="grid-two">
       <div class="card">
         <div class="section-title">Galeri kecil buat dia</div>
-        <div class="section-sub">Klik fotonya buat lihat versi gede.</div>
 
         <div class="gallery-grid">
           <div class="photo-card" onclick="openImageViewer('foto1.jpg', 'yang ini lucu banget')">
@@ -733,7 +719,6 @@
 
       <div class="card">
         <div class="section-title">Lagu buat nemenin</div>
-        <div class="section-sub">Taruh file musik dengan nama <b>music.mp3</b> di folder yang sama.</div>
 
         <div class="music-row">
           <button class="btn-main" onclick="toggleMusic()" id="musicBtn">Pause music</button>
@@ -756,17 +741,14 @@
 
         <div class="stack-actions">
           <button class="btn-second" onclick="openModal()">Aku penasaran</button>
-          <button class="btn-soft" onclick="changeText()">Mode gemes maksimal</button>
+          <button class="btn-soft" onclick="changeText()">Mode ucink maksimal</button>
         </div>
-
-        <div class="interactive-result" id="interactiveResult"></div>
       </div>
     </div>
 
     <div class="grid-two">
       <div class="card soft-box note-box">
-        <div class="section-title">Love note generator</div>
-        <div class="section-sub">Pencet buat dapet note random yang nggak terlalu lebay.</div>
+        <div class="section-title">Love note</div>
 
         <div class="note-actions">
           <button class="btn-main" onclick="generateLoveNote()">Bikin note</button>
@@ -781,7 +763,7 @@
       <div class="card">
         <div class="section-title">Mini game kecil</div>
         <div class="game-title">Mau jadi pasangan paling lucuuk sedunia nggak?</div>
-        <div class="game-question">Pilih jawaban yang paling jujur yaa. Jangan aneh-aneh.</div>
+        <div class="game-question">Pilih jawaban yang paling jujur yaa. Jangan aneh aneh ucink.</div>
 
         <div class="game-actions" id="gameArea">
           <button class="btn-main yes-btn" onclick="chooseYes()">Mau banget</button>
@@ -793,7 +775,7 @@
     </div>
 
     <div class="footer">
-      khusus buat ucink, sayangku, cintakuu, cantikku yang selalu jadi favorit
+      khusus buat cantikkuu yang selalu jadi favorit
     </div>
   </div>
 
@@ -820,7 +802,6 @@
     const namaKamu = "KAI";
     const namaDia = "UENN";
 
-    const panggilanList = ["ucink", "sayangku", "cintakuu", "cantikku"];
     const typingList = [
       "aku bikin ini khusus buat kamu",
       "yang manis, yang lucu, yang selalu aku tunggu",
@@ -830,23 +811,14 @@
 
     const cuteTexts = [
       "Kamu kok manis banget sih, ilegal tau nggak",
-      "Aku + kamu = pasangan paling gemoy sedunia",
+      "Aku + kamu = pasangan paling lucuuuk sedunia",
       "Kalau kangen, sini aku peluk virtual dulu",
       "Jangan lupa minum air, terus jangan lupa sayang aku",
-      "Kamu tuh kayak lagu favorit, nggak pernah bosen aku ulang-ulang"
-    ];
-
-    const randomTexts = [
-      "Hari ini kamu cantik. Besok juga. Lusa juga. Agak konsisten ya.",
-      "Kalau aku disuruh milih suasana paling nyaman, mungkin itu waktu ngobrol sama kamu.",
-      "Ucink ternyata punya bakat bikin orang senyum cuma dari hadir doang.",
-      "Sayangku, kamu nggak usah ngapa-ngapain juga udah bikin aku seneng.",
-      "Cintakuu, tenang aja, posisi favorit masih kamu terus.",
-      "Cantikku, jangan terlalu lucu, nanti aku makin susah biasa aja."
+      "Kamu tuh kayak lagu favorit, nggak pernah bosen aku ulang ulang"
     ];
 
     const modalTexts = [
-      "Kadang aku bingung, kok bisa ya ada orang se-manis kamu.",
+      "Kadang aku bingung, kok bisa ya ada orang semanis kamu.",
       "Aku suka cara kamu bikin hal biasa jadi terasa lebih enak dijalanin.",
       "Nggak harus rame, nggak harus berlebihan. Yang penting ada kamu.",
       "Kalau kamu capek, sini istirahat. Aku jagain suasananya."
@@ -855,14 +827,13 @@
     const loveNotes = [
       "Aku suka cara kamu bikin hal biasa jadi terasa lebih enak dijalanin.",
       "Kalau ada versi tenang dari seseorang, mungkin itu kamu.",
-      "Kamu nggak perlu ngapa-ngapain buat jadi favorit aku.",
+      "Kamu nggak perlu ngapa ngapain buat jadi favorit aku.",
       "Aku seneng karena di antara banyak hal, aku ketemu kamu.",
       "Yang bikin hari terasa beda itu seringnya cuma karena ada kamu.",
       "Kamu lucu, manis, dan entah kenapa selalu bikin aku pengen stay."
     ];
 
     let textIndex = 0;
-    let callIndex = 0;
     let typingSentenceIndex = 0;
     let typingCharIndex = 0;
     let deleting = false;
@@ -901,28 +872,15 @@
       burstHearts(12);
     }
 
-    function showSecret() {
-      const secret = document.getElementById("secretMessage");
-      secret.textContent = `Aku sayang banget sama ${namaDia} ❤`;
-      burstHearts(8);
+    function goToWhatsApp() {
+      const message = encodeURIComponent("babuu, aku kangenn");
+      window.open(`https://wa.me/6285111602642?text=${message}`, "_blank");
     }
 
     function changeText() {
       const secret = document.getElementById("secretMessage");
       secret.textContent = cuteTexts[textIndex];
       textIndex = (textIndex + 1) % cuteTexts.length;
-    }
-
-    function changeCallName() {
-      callIndex = (callIndex + 1) % panggilanList.length;
-      const panggilan = panggilanList[callIndex];
-      document.getElementById("mainTitle").textContent = `Hai, ${panggilan}`;
-      document.getElementById("interactiveResult").textContent = `Sekarang aku manggil kamu: ${panggilan}.`;
-    }
-
-    function randomMessage() {
-      const randomIndex = Math.floor(Math.random() * randomTexts.length);
-      document.getElementById("interactiveResult").textContent = randomTexts[randomIndex];
     }
 
     function openModal() {
