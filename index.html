@@ -12,145 +12,362 @@
       font-family: "Poppins", "Segoe UI", sans-serif;
     }
 
+    :root {
+      --bg1: #0f0c29;
+      --bg2: #1c1b33;
+      --bg3: #24243e;
+      --text: #ffffff;
+      --muted: rgba(255,255,255,0.74);
+      --soft: rgba(255,255,255,0.08);
+      --soft-border: rgba(255,255,255,0.12);
+      --pink1: #ff4f9a;
+      --pink2: #ff85c2;
+      --pink3: #ffd6ec;
+      --pink4: #ffb6d9;
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.32);
+    }
+
     body {
       min-height: 100vh;
       overflow-x: hidden;
       overflow-y: auto;
       background:
-        radial-gradient(circle at top, rgba(255, 105, 180, 0.18), transparent 30%),
+        radial-gradient(circle at top, rgba(255, 105, 180, 0.16), transparent 28%),
         radial-gradient(circle at bottom, rgba(138, 43, 226, 0.18), transparent 25%),
-        linear-gradient(135deg, #0f0c29, #1c1b33, #24243e);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
+        linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+      color: var(--text);
       padding: 20px;
       position: relative;
     }
 
-    .card {
+    .light {
+      position: fixed;
+      width: 180px;
+      height: 180px;
+      border-radius: 999px;
+      filter: blur(60px);
+      opacity: 0.15;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .light.one {
+      top: 4%;
+      left: 4%;
+      background: #ff4f9a;
+    }
+
+    .light.two {
+      bottom: 4%;
+      right: 4%;
+      background: #7d5cff;
+    }
+
+    .page {
       width: 100%;
-      max-width: 720px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(14px);
-      border-radius: 28px;
-      padding: 34px 26px;
-      text-align: center;
-      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+      max-width: 960px;
+      margin: 0 auto;
       position: relative;
       z-index: 2;
-      animation: popIn 1s ease;
-      margin: 24px 0;
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+      transition: 0.7s ease;
+    }
+
+    .page.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .card {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--soft-border);
+      backdrop-filter: blur(14px);
+      border-radius: 30px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      animation: popIn 0.8s ease;
+      margin: 18px 0;
     }
 
     .badge {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       padding: 8px 16px;
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.12);
       font-size: 0.9rem;
-      margin-bottom: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 16px;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--muted);
     }
 
-    h1 {
-      font-size: 2.3rem;
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .hero-title {
+      font-size: 2.45rem;
+      line-height: 1.15;
       margin-bottom: 10px;
-      line-height: 1.2;
       word-break: break-word;
+    }
+
+    .typing-line {
+      min-height: 30px;
+      font-size: 1rem;
+      color: var(--pink3);
+      margin-bottom: 10px;
     }
 
     .couple-name {
-      font-size: 1.2rem;
+      font-size: 1.12rem;
       font-weight: 600;
-      color: #ffb6d9;
-      margin-bottom: 18px;
+      color: var(--pink4);
+      margin-bottom: 16px;
       word-break: break-word;
     }
 
-    p {
-      font-size: 1.05rem;
+    .hero-desc {
+      font-size: 1rem;
       line-height: 1.8;
       color: #f4f4f8;
-      margin-bottom: 15px;
+      margin-bottom: 14px;
     }
 
-    .cute-box {
-      margin-top: 22px;
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 22px;
-      padding: 18px;
-    }
-
-    .btn-wrap {
+    .hero-actions,
+    .stack-actions,
+    .note-actions,
+    .music-row {
       display: flex;
       gap: 12px;
-      justify-content: center;
       flex-wrap: wrap;
-      margin-top: 22px;
+      margin-top: 14px;
     }
 
     button {
       border: none;
-      padding: 12px 20px;
+      padding: 12px 18px;
       border-radius: 999px;
       cursor: pointer;
-      font-size: 0.98rem;
+      font-size: 0.96rem;
       font-weight: 700;
       transition: 0.25s ease;
       max-width: 100%;
     }
 
+    button:hover {
+      transform: translateY(-2px) scale(1.02);
+    }
+
     .btn-main {
-      background: linear-gradient(135deg, #ff4f9a, #ff85c2);
+      background: linear-gradient(135deg, var(--pink1), var(--pink2));
       color: white;
-      box-shadow: 0 8px 20px rgba(255, 79, 154, 0.35);
+      box-shadow: 0 8px 22px rgba(255, 79, 154, 0.35);
     }
 
     .btn-second {
-      background: rgba(255, 255, 255, 0.12);
-      color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255,255,255,0.12);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.1);
     }
 
-    button:hover {
-      transform: translateY(-2px) scale(1.03);
+    .btn-soft {
+      background: rgba(255, 182, 217, 0.16);
+      color: white;
+      border: 1px solid rgba(255, 182, 217, 0.18);
     }
 
-    .secret {
-      margin-top: 20px;
-      display: none;
+    .main-photo-wrap {
+      height: 100%;
+      min-height: 400px;
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.24);
+      cursor: pointer;
+    }
+
+    .main-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .main-photo-overlay {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 18px;
+      background: linear-gradient(to top, rgba(0,0,0,0.56), rgba(0,0,0,0));
+      text-align: left;
+    }
+
+    .main-photo-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 6px;
+    }
+
+    .main-photo-sub {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.86);
+      line-height: 1.5;
+    }
+
+    .section-title {
       font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--pink3);
+      margin-bottom: 8px;
+    }
+
+    .section-sub {
+      font-size: 0.94rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+
+    .grid-two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .soft-box {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px;
+      padding: 18px;
+    }
+
+    .secret,
+    .interactive-result,
+    .result,
+    .music-status,
+    .note-output {
+      margin-top: 14px;
+      font-size: 0.98rem;
       color: #ffe2f0;
-      animation: fadeIn 0.7s ease;
+      line-height: 1.7;
+      min-height: 28px;
       word-break: break-word;
     }
 
-    .game-box {
-      margin-top: 24px;
-      padding: 20px;
-      border-radius: 22px;
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .photo-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .photo-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.24);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-caption {
+      padding: 10px 12px;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.82);
+    }
+
+    .music-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.86);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+    }
+
+    .progress-wrap {
+      width: 100%;
+      height: 8px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 14px;
+    }
+
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--pink1), var(--pink2));
+      border-radius: 999px;
+      transition: width 0.15s linear;
+    }
+
+    .time-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 8px;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.72);
+    }
+
+    .note-box {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .note-box::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,79,154,0.05), rgba(125,92,255,0.05));
+      pointer-events: none;
     }
 
     .game-title {
-      font-size: 1.1rem;
+      font-size: 1.08rem;
       font-weight: 700;
-      color: #ffd6ec;
+      color: var(--pink3);
       margin-bottom: 8px;
     }
 
     .game-question {
       margin-bottom: 18px;
       color: #f7eef5;
+      line-height: 1.6;
     }
 
     .game-actions {
       position: relative;
-      height: 120px;
+      height: 130px;
       margin-top: 10px;
       width: 100%;
     }
@@ -166,38 +383,134 @@
     .yes-btn {
       left: calc(50% - 130px);
       top: 10px;
-      transform: none;
     }
 
     .no-btn {
       left: calc(50% + 10px);
       top: 10px;
-      transform: none;
-    }
-
-    .result {
-      margin-top: 16px;
-      color: #ffe2f0;
-      font-weight: 600;
-      min-height: 28px;
-      line-height: 1.6;
-      word-break: break-word;
     }
 
     .footer {
-      margin-top: 24px;
+      text-align: center;
+      margin-top: 10px;
       font-size: 0.92rem;
-      color: rgba(255, 255, 255, 0.75);
-      word-break: break-word;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.7;
+      padding-bottom: 10px;
     }
 
     .heart {
-      position: absolute;
+      position: fixed;
       pointer-events: none;
       animation: floatUp linear forwards;
       z-index: 1;
       font-size: 18px;
       opacity: 0.9;
+    }
+
+    .overlay-start {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background:
+        radial-gradient(circle at top, rgba(255, 105, 180, 0.18), transparent 30%),
+        linear-gradient(135deg, #0f0c29, #1c1b33, #24243e);
+      transition: 0.7s ease;
+    }
+
+    .overlay-start.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .start-card {
+      width: 100%;
+      max-width: 520px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(14px);
+      border-radius: 28px;
+      padding: 28px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      animation: popIn 0.8s ease;
+    }
+
+    .start-title {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .start-sub {
+      font-size: 0.98rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .pulse {
+      animation: pulseGlow 1.8s infinite;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      z-index: 30;
+    }
+
+    .modal {
+      width: 100%;
+      max-width: 460px;
+      background: rgba(23, 24, 44, 0.98);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px;
+      padding: 22px;
+      text-align: center;
+      box-shadow: 0 20px 46px rgba(0,0,0,0.38);
+      animation: popIn 0.25s ease;
+    }
+
+    .modal.large {
+      max-width: 760px;
+      padding: 16px;
+      background: rgba(18, 18, 32, 0.98);
+    }
+
+    .modal h3 {
+      margin-bottom: 10px;
+      color: var(--pink3);
+      font-size: 1.1rem;
+    }
+
+    .modal p {
+      margin-bottom: 16px;
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: white;
+    }
+
+    .viewer-img {
+      width: 100%;
+      max-height: 75vh;
+      object-fit: contain;
+      border-radius: 18px;
+      display: block;
+      background: rgba(255,255,255,0.04);
+    }
+
+    audio {
+      display: none;
     }
 
     @keyframes floatUp {
@@ -209,7 +522,7 @@
         opacity: 1;
       }
       to {
-        transform: translateY(-110vh) scale(1.4);
+        transform: translateY(-110vh) scale(1.35);
         opacity: 0;
       }
     }
@@ -217,7 +530,7 @@
     @keyframes popIn {
       from {
         opacity: 0;
-        transform: translateY(20px) scale(0.98);
+        transform: translateY(16px) scale(0.98);
       }
       to {
         opacity: 1;
@@ -225,71 +538,92 @@
       }
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(8px);
+    @keyframes pulseGlow {
+      0%, 100% {
+        box-shadow: 0 0 0 rgba(255,79,154,0.2);
       }
-      to {
-        opacity: 1;
-        transform: translateY(0);
+      50% {
+        box-shadow: 0 0 24px rgba(255,79,154,0.35);
+      }
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .main-photo-wrap {
+        min-height: 320px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .gallery-grid,
+      .grid-two {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-card img {
+        height: 260px;
       }
     }
 
     @media (max-width: 600px) {
       body {
-        align-items: flex-start;
         padding: 14px;
       }
 
-      .card {
-        padding: 24px 16px;
-        border-radius: 22px;
-        margin: 14px 0;
+      .card,
+      .start-card {
+        padding: 18px 16px;
+        border-radius: 24px;
       }
 
-      h1 {
+      .hero-title {
+        font-size: 1.8rem;
+      }
+
+      .start-title {
         font-size: 1.7rem;
       }
 
+      .typing-line,
+      .hero-desc,
+      .section-sub,
+      .music-status,
+      .interactive-result,
+      .secret,
+      .result,
+      .note-output {
+        font-size: 0.94rem;
+      }
+
       .couple-name {
-        font-size: 1.05rem;
+        font-size: 1rem;
       }
 
-      p {
-        font-size: 0.95rem;
-        line-height: 1.7;
-      }
-
-      .badge {
-        font-size: 0.82rem;
-        padding: 7px 14px;
-      }
-
-      .btn-wrap {
+      .hero-actions,
+      .stack-actions,
+      .note-actions,
+      .music-row {
         flex-direction: column;
         align-items: stretch;
       }
 
-      .btn-wrap button {
+      .hero-actions button,
+      .stack-actions button,
+      .note-actions button,
+      .music-row button {
         width: 100%;
       }
 
-      .game-box {
-        padding: 18px 14px;
-      }
-
-      .game-title {
-        font-size: 1rem;
-        line-height: 1.5;
-      }
-
-      .game-question {
-        font-size: 0.95rem;
+      .music-chip {
+        width: 100%;
+        justify-content: center;
       }
 
       .game-actions {
-        height: 150px;
+        height: 155px;
       }
 
       .yes-btn,
@@ -310,60 +644,175 @@
         top: 12px;
       }
 
-      .result {
-        font-size: 0.95rem;
+      .photo-card img {
+        height: 220px;
       }
 
-      .footer {
-        font-size: 0.88rem;
-        line-height: 1.6;
+      .main-photo-wrap {
+        min-height: 260px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <div class="badge">made with love</div>
-    <h1>Hai, sayangkuu ucinkk kuu cintakuu</h1>
-    <div class="couple-name" id="coupleName">KAI ❤ UENN</div>
+  <div class="light one"></div>
+  <div class="light two"></div>
 
-    <p>
-      Dari semua hal lucu di dunia ini, yang paling bikin aku senyum terus tetep kamu.
-    </p>
-    <p>
-      Makasih ya udah hadir, nemenin, dan bikin hari-hari aku jadi jauh lebih manis.
-    </p>
+  <div class="overlay-start" id="startOverlay">
+    <div class="start-card">
+      <div class="badge">special page</div>
+      <div class="start-title">Hai, ucink</div>
+      <div class="start-sub">
+        Aku bikin sesuatu yang simpel tapi niat, khusus buat kamu.
+        Buka pelan-pelan ya.
+      </div>
+      <button class="btn-main pulse" onclick="enterPage()">Tap to open</button>
+    </div>
+  </div>
 
-    <div class="cute-box">
-      <p>
-        Aku mungkin nggak jago nyusun kata-kata, tapi aku jago banget
-        <b>sayang sama kamu</b>.
-      </p>
+  <div class="page" id="mainPage">
+    <div class="card">
+      <div class="badge">made with love</div>
+
+      <div class="hero">
+        <div>
+          <h1 class="hero-title" id="mainTitle">Hai, ucink</h1>
+          <div class="typing-line" id="typingText"></div>
+          <div class="couple-name" id="coupleName">KAI ❤ UENN</div>
+
+          <div class="hero-desc">
+            Dari semua hal lucu di dunia ini, yang paling bikin aku senyum terus tetep kamu.
+          </div>
+          <div class="hero-desc">
+            Makasih ya udah hadir, nemenin, dan bikin hari-hari aku jadi jauh lebih manis.
+          </div>
+
+          <div class="hero-actions">
+            <button class="btn-main" onclick="showSecret()">Pencet kalau kamu kangen aku</button>
+            <button class="btn-second" onclick="changeCallName()">Ganti panggilan</button>
+            <button class="btn-soft" onclick="randomMessage()">Pesan random</button>
+          </div>
+
+          <div class="secret" id="secretMessage">
+            Kamu tuh lucukk, cantikkk, semoggss, seggsyy hottt, emss dan jadi favorit aku selamanya.
+          </div>
+        </div>
+
+        <div>
+          <div class="main-photo-wrap" onclick="openImageViewer('foto-main.jpg', 'cantikku yang ini paling bikin aku diem bentar')">
+            <img src="foto-main.jpg" alt="Foto utama" />
+            <div class="main-photo-overlay">
+              <div class="main-photo-title">buat cantikku</div>
+              <div class="main-photo-sub">yang lucu, manis, dan selalu jadi favorit aku</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="btn-wrap">
-      <button class="btn-main" onclick="showSecret()">Pencet kalau kamu kangen aku</button>
-      <button class="btn-second" onclick="changeText()">Mode gemes maksimal</button>
-    </div>
+    <div class="grid-two">
+      <div class="card">
+        <div class="section-title">Galeri kecil buat dia</div>
+        <div class="section-sub">Klik fotonya buat lihat versi gede.</div>
 
-    <div class="secret" id="secretMessage">
-      Kamu tuh lucukk, cantikkk, semoggss, seggsyy hottt, emss dan jadi favorit aku selamanya.
-    </div>
-
-    <div class="game-box">
-      <div class="game-title">Mini Game: Mau jadi pasangan paling lucuuk sedunia nggak?</div>
-      <div class="game-question">Pilih jawaban yang paling jujur yaa...</div>
-
-      <div class="game-actions" id="gameArea">
-        <button class="btn-main yes-btn" onclick="chooseYes()">Mau banget</button>
-        <button class="btn-second no-btn" id="noBtn" onmouseover="moveNoBtn()" onclick="moveNoBtn()">Gamau</button>
+        <div class="gallery-grid">
+          <div class="photo-card" onclick="openImageViewer('foto1.jpg', 'yang ini lucu banget')">
+            <img src="foto1.jpg" alt="Foto 1" />
+            <div class="photo-caption">yang ini lucu banget</div>
+          </div>
+          <div class="photo-card" onclick="openImageViewer('foto2.jpg', 'yang ini manis banget')">
+            <img src="foto2.jpg" alt="Foto 2" />
+            <div class="photo-caption">yang ini manis banget</div>
+          </div>
+          <div class="photo-card" onclick="openImageViewer('foto3.jpg', 'yang ini favorit banget')">
+            <img src="foto3.jpg" alt="Foto 3" />
+            <div class="photo-caption">yang ini favorit banget</div>
+          </div>
+        </div>
       </div>
 
-      <div class="result" id="resultText"></div>
+      <div class="card">
+        <div class="section-title">Lagu buat nemenin</div>
+        <div class="section-sub">Taruh file musik dengan nama <b>music.mp3</b> di folder yang sama.</div>
+
+        <div class="music-row">
+          <button class="btn-main" onclick="toggleMusic()" id="musicBtn">Pause music</button>
+          <div class="music-chip" id="musicChip">lagi muter buat dia</div>
+        </div>
+
+        <div class="progress-wrap">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="time-row">
+          <span id="currentTime">0:00</span>
+          <span id="durationTime">0:00</span>
+        </div>
+
+        <div class="music-status" id="musicStatus">Musik lagi diputar buat nemenin dia.</div>
+        <audio id="bgMusic" loop>
+          <source src="music.mp3" type="audio/mpeg" />
+        </audio>
+
+        <div class="stack-actions">
+          <button class="btn-second" onclick="openModal()">Aku penasaran</button>
+          <button class="btn-soft" onclick="changeText()">Mode gemes maksimal</button>
+        </div>
+
+        <div class="interactive-result" id="interactiveResult"></div>
+      </div>
+    </div>
+
+    <div class="grid-two">
+      <div class="card soft-box note-box">
+        <div class="section-title">Love note generator</div>
+        <div class="section-sub">Pencet buat dapet note random yang nggak terlalu lebay.</div>
+
+        <div class="note-actions">
+          <button class="btn-main" onclick="generateLoveNote()">Bikin note</button>
+          <button class="btn-second" onclick="copyLoveNote()">Copy note</button>
+        </div>
+
+        <div class="note-output" id="noteOutput">
+          Aku suka cara kamu bikin hal biasa jadi terasa lebih enak dijalanin.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="section-title">Mini game kecil</div>
+        <div class="game-title">Mau jadi pasangan paling lucuuk sedunia nggak?</div>
+        <div class="game-question">Pilih jawaban yang paling jujur yaa. Jangan aneh-aneh.</div>
+
+        <div class="game-actions" id="gameArea">
+          <button class="btn-main yes-btn" onclick="chooseYes()">Mau banget</button>
+          <button class="btn-second no-btn" id="noBtn" onmouseover="moveNoBtn()" onclick="moveNoBtn()">Gamau</button>
+        </div>
+
+        <div class="result" id="resultText"></div>
+      </div>
     </div>
 
     <div class="footer">
-      khusus buat pasangan paling imudddd seggsyyy sedunia
+      khusus buat ucink, sayangku, cintakuu, cantikku yang selalu jadi favorit
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="textModalBackdrop" onclick="closeModal(event)">
+    <div class="modal">
+      <h3>Buat kamu</h3>
+      <p id="modalText">
+        Aku nggak harus punya banyak kata buat bikin kamu ngerti satu hal:
+        aku seneng banget bisa kenal kamu.
+      </p>
+      <button class="btn-main" onclick="closeModal()">Tutup</button>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="imageModalBackdrop" onclick="closeImageViewer(event)">
+    <div class="modal large">
+      <img src="" alt="Foto besar" class="viewer-img" id="viewerImg" />
+      <p id="viewerCaption" style="margin-top:12px; margin-bottom:14px; color: rgba(255,255,255,0.86);"></p>
+      <button class="btn-main" onclick="closeImageViewer()">Tutup</button>
     </div>
   </div>
 
@@ -371,13 +820,13 @@
     const namaKamu = "KAI";
     const namaDia = "UENN";
 
-    document.getElementById("coupleName").textContent = `${namaKamu} ❤ ${namaDia}`;
-
-    function showSecret() {
-      const secret = document.getElementById("secretMessage");
-      secret.style.display = "block";
-      secret.textContent = `Aku sayang banget sama ${namaDia} ❤`;
-    }
+    const panggilanList = ["ucink", "sayangku", "cintakuu", "cantikku"];
+    const typingList = [
+      "aku bikin ini khusus buat kamu",
+      "yang manis, yang lucu, yang selalu aku tunggu",
+      "yang kalau muncul bikin hari jadi beda",
+      "yang entah kenapa selalu jadi favorit aku"
+    ];
 
     const cuteTexts = [
       "Kamu kok manis banget sih, ilegal tau nggak",
@@ -387,18 +836,138 @@
       "Kamu tuh kayak lagu favorit, nggak pernah bosen aku ulang-ulang"
     ];
 
+    const randomTexts = [
+      "Hari ini kamu cantik. Besok juga. Lusa juga. Agak konsisten ya.",
+      "Kalau aku disuruh milih suasana paling nyaman, mungkin itu waktu ngobrol sama kamu.",
+      "Ucink ternyata punya bakat bikin orang senyum cuma dari hadir doang.",
+      "Sayangku, kamu nggak usah ngapa-ngapain juga udah bikin aku seneng.",
+      "Cintakuu, tenang aja, posisi favorit masih kamu terus.",
+      "Cantikku, jangan terlalu lucu, nanti aku makin susah biasa aja."
+    ];
+
+    const modalTexts = [
+      "Kadang aku bingung, kok bisa ya ada orang se-manis kamu.",
+      "Aku suka cara kamu bikin hal biasa jadi terasa lebih enak dijalanin.",
+      "Nggak harus rame, nggak harus berlebihan. Yang penting ada kamu.",
+      "Kalau kamu capek, sini istirahat. Aku jagain suasananya."
+    ];
+
+    const loveNotes = [
+      "Aku suka cara kamu bikin hal biasa jadi terasa lebih enak dijalanin.",
+      "Kalau ada versi tenang dari seseorang, mungkin itu kamu.",
+      "Kamu nggak perlu ngapa-ngapain buat jadi favorit aku.",
+      "Aku seneng karena di antara banyak hal, aku ketemu kamu.",
+      "Yang bikin hari terasa beda itu seringnya cuma karena ada kamu.",
+      "Kamu lucu, manis, dan entah kenapa selalu bikin aku pengen stay."
+    ];
+
     let textIndex = 0;
+    let callIndex = 0;
+    let typingSentenceIndex = 0;
+    let typingCharIndex = 0;
+    let deleting = false;
+    let isMusicPlaying = false;
+    let entered = false;
+
+    const audio = document.getElementById("bgMusic");
+    const musicBtn = document.getElementById("musicBtn");
+    const musicStatus = document.getElementById("musicStatus");
+    const musicChip = document.getElementById("musicChip");
+    const progressBar = document.getElementById("progressBar");
+    const currentTimeEl = document.getElementById("currentTime");
+    const durationTimeEl = document.getElementById("durationTime");
+
+    document.getElementById("coupleName").textContent = `${namaKamu} ❤ ${namaDia}`;
+
+    function enterPage() {
+      if (entered) return;
+      entered = true;
+
+      document.getElementById("startOverlay").classList.add("hide");
+      document.getElementById("mainPage").classList.add("show");
+
+      audio.play().then(() => {
+        isMusicPlaying = true;
+        musicBtn.textContent = "Pause music";
+        musicStatus.textContent = "Musik lagi diputar buat nemenin dia.";
+        musicChip.textContent = "lagi muter buat dia";
+      }).catch(() => {
+        isMusicPlaying = false;
+        musicBtn.textContent = "Play music";
+        musicStatus.textContent = "Klik tombol music kalau lagunya belum mulai.";
+        musicChip.textContent = "siap diputer";
+      });
+
+      burstHearts(12);
+    }
+
+    function showSecret() {
+      const secret = document.getElementById("secretMessage");
+      secret.textContent = `Aku sayang banget sama ${namaDia} ❤`;
+      burstHearts(8);
+    }
+
     function changeText() {
       const secret = document.getElementById("secretMessage");
-      secret.style.display = "block";
       secret.textContent = cuteTexts[textIndex];
       textIndex = (textIndex + 1) % cuteTexts.length;
     }
 
+    function changeCallName() {
+      callIndex = (callIndex + 1) % panggilanList.length;
+      const panggilan = panggilanList[callIndex];
+      document.getElementById("mainTitle").textContent = `Hai, ${panggilan}`;
+      document.getElementById("interactiveResult").textContent = `Sekarang aku manggil kamu: ${panggilan}.`;
+    }
+
+    function randomMessage() {
+      const randomIndex = Math.floor(Math.random() * randomTexts.length);
+      document.getElementById("interactiveResult").textContent = randomTexts[randomIndex];
+    }
+
+    function openModal() {
+      const randomIndex = Math.floor(Math.random() * modalTexts.length);
+      document.getElementById("modalText").textContent = modalTexts[randomIndex];
+      document.getElementById("textModalBackdrop").style.display = "flex";
+    }
+
+    function closeModal(event) {
+      if (!event || event.target.id === "textModalBackdrop" || event.target.tagName === "BUTTON") {
+        document.getElementById("textModalBackdrop").style.display = "none";
+      }
+    }
+
+    function openImageViewer(src, caption) {
+      document.getElementById("viewerImg").src = src;
+      document.getElementById("viewerCaption").textContent = caption || "";
+      document.getElementById("imageModalBackdrop").style.display = "flex";
+    }
+
+    function closeImageViewer(event) {
+      if (!event || event.target.id === "imageModalBackdrop" || event.target.tagName === "BUTTON") {
+        document.getElementById("imageModalBackdrop").style.display = "none";
+      }
+    }
+
+    function generateLoveNote() {
+      const randomIndex = Math.floor(Math.random() * loveNotes.length);
+      document.getElementById("noteOutput").textContent = loveNotes[randomIndex];
+    }
+
+    async function copyLoveNote() {
+      const text = document.getElementById("noteOutput").textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+        document.getElementById("noteOutput").textContent = `Ke-copy: "${text}"`;
+      } catch {
+        document.getElementById("noteOutput").textContent = "Nggak bisa auto copy di browser ini, copy manual ya.";
+      }
+    }
+
     function chooseYes() {
       document.getElementById("resultText").textContent =
-        `YEAYYY ❤ Sekarang ${namaKamu} dan ${namaDia} resmi jadi duo paling LUCUUKKKK sedunia!`;
-      burstHearts();
+        `YEAYYY ❤ Sekarang ${namaKamu} dan ${namaDia} resmi jadi duo paling lucuuk sedunia.`;
+      burstHearts(14);
     }
 
     function moveNoBtn() {
@@ -413,7 +982,6 @@
 
       btn.style.left = randomX + "px";
       btn.style.top = randomY + "px";
-      btn.style.transform = "none";
       document.getElementById("resultText").textContent = "Eits, jangan nolak dong";
     }
 
@@ -425,18 +993,91 @@
       item.style.bottom = "-20px";
       item.style.animationDuration = (Math.random() * 4 + 4) + "s";
       item.style.fontSize = (Math.random() * 12 + 12) + "px";
-
       document.body.appendChild(item);
       setTimeout(() => item.remove(), 9000);
     }
 
-    function burstHearts() {
-      for (let i = 0; i < 10; i++) {
-        setTimeout(() => createHeart("❤"), i * 100);
+    function burstHearts(total = 10) {
+      for (let i = 0; i < total; i++) {
+        setTimeout(() => createHeart("❤"), i * 90);
       }
     }
 
-    setInterval(() => createHeart("❤"), 1400);
+    function typeLoop() {
+      const typingEl = document.getElementById("typingText");
+      const currentSentence = typingList[typingSentenceIndex];
+
+      if (!deleting) {
+        typingCharIndex++;
+        typingEl.textContent = currentSentence.slice(0, typingCharIndex);
+
+        if (typingCharIndex === currentSentence.length) {
+          deleting = true;
+          setTimeout(typeLoop, 1400);
+          return;
+        }
+      } else {
+        typingCharIndex--;
+        typingEl.textContent = currentSentence.slice(0, typingCharIndex);
+
+        if (typingCharIndex === 0) {
+          deleting = false;
+          typingSentenceIndex = (typingSentenceIndex + 1) % typingList.length;
+        }
+      }
+
+      setTimeout(typeLoop, deleting ? 35 : 70);
+    }
+
+    async function toggleMusic() {
+      try {
+        if (!isMusicPlaying) {
+          await audio.play();
+          isMusicPlaying = true;
+          musicBtn.textContent = "Pause music";
+          musicStatus.textContent = "Musik lagi diputar buat nemenin dia.";
+          musicChip.textContent = "lagi muter buat dia";
+        } else {
+          audio.pause();
+          isMusicPlaying = false;
+          musicBtn.textContent = "Play music";
+          musicStatus.textContent = "Musik dipause dulu.";
+          musicChip.textContent = "lagi diem dulu";
+        }
+      } catch (error) {
+        musicStatus.textContent = "Musiknya belum kebaca. Cek lagi file music.mp3 ya.";
+        musicChip.textContent = "file musik belum kebaca";
+      }
+    }
+
+    function formatTime(seconds) {
+      if (!isFinite(seconds)) return "0:00";
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
+    }
+
+    audio.addEventListener("loadedmetadata", () => {
+      durationTimeEl.textContent = formatTime(audio.duration);
+    });
+
+    audio.addEventListener("timeupdate", () => {
+      currentTimeEl.textContent = formatTime(audio.currentTime);
+      durationTimeEl.textContent = formatTime(audio.duration);
+      const progress = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+      progressBar.style.width = `${progress}%`;
+    });
+
+    audio.addEventListener("ended", () => {
+      progressBar.style.width = "0%";
+      currentTimeEl.textContent = "0:00";
+    });
+
+    setInterval(() => {
+      if (entered) createHeart("❤");
+    }, 2400);
+
+    typeLoop();
   </script>
 </body>
 </html>
