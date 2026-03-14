@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Untuk Kamu</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", "Segoe UI", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top, rgba(255, 105, 180, 0.18), transparent 30%),
+        radial-gradient(circle at bottom, rgba(138, 43, 226, 0.18), transparent 25%),
+        linear-gradient(135deg, #0f0c29, #1c1b33, #24243e);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      padding: 20px;
+      position: relative;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 720px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(14px);
+      border-radius: 28px;
+      padding: 34px 26px;
+      text-align: center;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+      position: relative;
+      z-index: 2;
+      animation: popIn 1s ease;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .couple-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #ffb6d9;
+      margin-bottom: 18px;
+    }
+
+    p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #f4f4f8;
+      margin-bottom: 15px;
+    }
+
+    .cute-box {
+      margin-top: 22px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px;
+      padding: 18px;
+    }
+
+    .btn-wrap {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    button {
+      border: none;
+      padding: 12px 20px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.98rem;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .btn-main {
+      background: linear-gradient(135deg, #ff4f9a, #ff85c2);
+      color: white;
+      box-shadow: 0 8px 20px rgba(255, 79, 154, 0.35);
+    }
+
+    .btn-second {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    button:hover {
+      transform: translateY(-2px) scale(1.03);
+    }
+
+    .secret {
+      margin-top: 20px;
+      display: none;
+      font-size: 1.05rem;
+      color: #ffe2f0;
+      animation: fadeIn 0.7s ease;
+    }
+
+    .game-box {
+      margin-top: 24px;
+      padding: 20px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .game-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #ffd6ec;
+      margin-bottom: 8px;
+    }
+
+    .game-question {
+      margin-bottom: 18px;
+      color: #f7eef5;
+    }
+
+    .game-actions {
+      position: relative;
+      height: 90px;
+      margin-top: 10px;
+    }
+
+    .yes-btn, .no-btn {
+      position: absolute;
+      min-width: 120px;
+    }
+
+    .yes-btn {
+      left: 50%;
+      transform: translateX(-140px);
+    }
+
+    .no-btn {
+      left: 50%;
+      transform: translateX(20px);
+    }
+
+    .result {
+      margin-top: 16px;
+      color: #ffe2f0;
+      font-weight: 600;
+      min-height: 28px;
+    }
+
+    .footer {
+      margin-top: 24px;
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.75);
+    }
+
+    .heart {
+      position: absolute;
+      pointer-events: none;
+      animation: floatUp linear forwards;
+      z-index: 1;
+      font-size: 18px;
+      opacity: 0.9;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0) scale(0.8);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-110vh) scale(1.4);
+        opacity: 0;
+      }
+    }
+
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.85rem;
+      }
+
+      p {
+        font-size: 0.98rem;
+      }
+
+      .card {
+        padding: 28px 18px;
+      }
+
+      .game-actions {
+        height: 120px;
+      }
+
+      .yes-btn {
+        transform: translateX(-120px);
+      }
+
+      .no-btn {
+        transform: translateX(10px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="badge">made with love</div>
+    <h1>Hai, sayangkuu ucinkk kuu cintakuu</h1>
+    <div class="couple-name" id="coupleName">KAI ❤ UENN</div>
+
+    <p>
+      Dari semua hal lucu di dunia ini, yang paling bikin aku senyum terus tetep kamu.
+    </p>
+    <p>
+      Makasih ya udah hadir, nemenin, dan bikin hari-hari aku jadi jauh lebih manis.
+    </p>
+
+    <div class="cute-box">
+      <p>
+        Aku mungkin nggak jago nyusun kata-kata, tapi aku jago banget
+        <b>sayang sama kamu</b>.
+      </p>
+    </div>
+
+    <div class="btn-wrap">
+      <button class="btn-main" onclick="showSecret()">Pencet kalau kamu kangen aku</button>
+      <button class="btn-second" onclick="changeText()">Mode gemes maksimal</button>
+    </div>
+
+    <div class="secret" id="secretMessage">
+      Kamu tuh lucukk, cantikkk, semoggss, seggsyy hottt, emss dan jadi favorit aku selamanya.
+    </div>
+
+    <div class="game-box">
+      <div class="game-title">Mini Game: Mau jadi pasangan paling lucuuk sedunia nggak?</div>
+      <div class="game-question">Pilih jawaban yang paling jujur yaa...</div>
+
+      <div class="game-actions" id="gameArea">
+        <button class="btn-main yes-btn" onclick="chooseYes()">Mau banget</button>
+        <button class="btn-second no-btn" id="noBtn" onmouseover="moveNoBtn()" onclick="moveNoBtn()">Gamau</button>
+      </div>
+
+      <div class="result" id="resultText"></div>
+    </div>
+
+    <div class="footer">
+      khusus buat pasangan paling imudddd seggsyyy sedunia
+    </div>
+  </div>
+
+  <script>
+    const namaKamu = "KAI";
+    const namaDia = "UENN";
+
+    document.getElementById("coupleName").textContent = `${namaKamu} ❤ ${namaDia}`;
+
+    function showSecret() {
+      const secret = document.getElementById("secretMessage");
+      secret.style.display = "block";
+      secret.textContent = `Aku sayang banget sama ${namaDia} ❤`;
+    }
+
+    const cuteTexts = [
+      "Kamu kok manis banget sih, ilegal tau nggak",
+      "Aku + kamu = pasangan paling gemoy sedunia",
+      "Kalau kangen, sini aku peluk virtual dulu",
+      "Jangan lupa minum air, terus jangan lupa sayang aku",
+      "Kamu tuh kayak lagu favorit, nggak pernah bosen aku ulang-ulang"
+    ];
+
+    let textIndex = 0;
+    function changeText() {
+      const secret = document.getElementById("secretMessage");
+      secret.style.display = "block";
+      secret.textContent = cuteTexts[textIndex];
+      textIndex = (textIndex + 1) % cuteTexts.length;
+    }
+
+    function chooseYes() {
+      document.getElementById("resultText").textContent =
+        `YEAYYY ❤ Sekarang ${namaKamu} dan ${namaDia} resmi jadi duo paling LUCUUKKKK sedunia!`;
+      burstHearts();
+    }
+
+    function moveNoBtn() {
+      const btn = document.getElementById("noBtn");
+      const gameArea = document.getElementById("gameArea");
+
+      const maxX = gameArea.clientWidth - btn.offsetWidth;
+      const maxY = gameArea.clientHeight - btn.offsetHeight;
+
+      const randomX = Math.max(0, Math.floor(Math.random() * maxX));
+      const randomY = Math.max(0, Math.floor(Math.random() * maxY));
+
+      btn.style.left = randomX + "px";
+      btn.style.top = randomY + "px";
+      btn.style.transform = "none";
+      document.getElementById("resultText").textContent = "Eits, jangan nolak dong";
+    }
+
+    function createHeart(symbol = "❤") {
+      const item = document.createElement("div");
+      item.className = "heart";
+      item.textContent = symbol;
+      item.style.left = Math.random() * 100 + "vw";
+      item.style.bottom = "-20px";
+      item.style.animationDuration = (Math.random() * 4 + 4) + "s";
+      item.style.fontSize = (Math.random() * 12 + 12) + "px";
+
+      document.body.appendChild(item);
+      setTimeout(() => item.remove(), 9000);
+    }
+
+    function burstHearts() {
+      for (let i = 0; i < 12; i++) {
+        setTimeout(() => createHeart("❤"), i * 100);
+      }
+    }
+
+    setInterval(() => createHeart("❤"), 1200);
+  </script>
+</body>
+</html>
